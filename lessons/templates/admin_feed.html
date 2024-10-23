@@ -1,0 +1,207 @@
+{% extends 'admin_base_content.html' %}
+
+
+{%block content%}
+<div class="divider"></div>
+<h1 style="text-align:center;" >Admin Feed Page</h1>
+
+  
+
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+
+      
+
+      <button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#students" aria-expanded="false" aria-controls="collapseInvoiceTable">
+        <h2>All Students</h2>
+      </button>
+      <div class="divider"></div>
+    <div class="collapse" id="students">
+            
+
+        <table class="table">
+        <thead style="background-color: #023e8a;">
+          <tr style="color: white; ">
+            <th scope="col">ID</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Email</th>
+            <th scope="col">is_staff</th>
+            <th scope="col">is_active</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in student %}
+            <tr >
+              <th scope="row">{{user.id}}</th>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.is_staff }}</td>
+              <td>{{ user.is_active }}</td>
+              <td>
+                <a href = '{% url 'student_requests' user.id %}' class = "btn">
+                  <button type="button" class="EntryButton"><i class="bi bi-check2"></i></button>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+
+        </div>
+
+
+
+        <button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#parents" aria-expanded="false" aria-controls="collapseInvoiceTable">
+          <h2>Parents/Guardians</h2>
+        </button>
+        <div class="divider"></div>
+      <div class="collapse" id="parents">
+      
+
+        
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Firstname</th>
+              <th scope="col">Lastname</th>
+              <th scope="col">Email</th>
+              <th scope="col">is_staff</th>
+              <th scope="col">is_active</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in parents %}
+              <tr>
+                <th scope="row">{{user.id}}</th>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.is_staff }}</td>
+                <td>{{ user.is_active }}</td>
+                <td>
+                  <a href = '{% url 'student_requests' user.id %}' class = "btn">
+                    <button type="button" class="EntryButton"><i class="bi bi-check2"></i></button>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+          </table><br><br>
+
+
+          </div>
+
+
+
+
+          <button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#requests" aria-expanded="false" aria-controls="collapseInvoiceTable">
+            <h2>Requests</h2>
+          </button>
+          <div class="divider"></div>
+        <div class="collapse" id="requests">
+
+              
+
+
+          <button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#UnfulfilledRequests" aria-expanded="false" aria-controls="collapseInvoiceTable">
+            <h4>- Unfulfilled Requests</h4>
+          </button>
+          <div class="divider"></div>
+        <div class="collapse" id="UnfulfilledRequests">
+          
+        
+        <table class="table">
+          <thead>
+            <tr style="color: white; ">
+              <th scope="col">lesson_id</th>
+              <th scope="col">request_date</th>
+              <th scope="col">type</th>
+              <th scope="col">duration</th>
+              <th scope="col">lesson_date_time</th>
+              <th scope="col">term</th>
+              <th scope="col">teacher</th>
+              <th scope="col">is_booked</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for lesson in unfulfilled_lessons %}
+              <tr>
+                <th scope="row">{{ lesson.lesson_id }}</th>
+                <td>{{ lesson.request_date }}</td>
+                <td>{{ lesson.type }}</td>
+                <td>{{ lesson.duration }}</td>
+                
+                <td>{{ lesson.lesson_date_time }}</td>
+              
+                <td>{{ lesson.term }}</td>
+                
+                <td>{{ lesson.teacher_id }}</td>
+                <td>{{ lesson.lesson_status }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+
+          </div>
+
+
+
+          <button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#FulfilledRequests" aria-expanded="false" aria-controls="collapseInvoiceTable">
+            <h4>Fulfilled Requests</h4>
+          </button>
+          <div class="divider"></div>
+        <div class="collapse" id="FulfilledRequests">
+
+          <h4>- Fulfilled Requests</h4>
+          <table class="table">
+            <thead>
+              <tr >
+                <th scope="col">lesson_id</th>
+                <th scope="col">request_date</th>
+                <th scope="col">type</th>
+                <th scope="col">duration</th>
+                <th scope="col">lesson_date_time</th>
+                <th scope="col">term</th>
+                <th scope="col">teacher</th>
+                <th scope="col">is_booked</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for lesson in fulfilled_lessons %}
+                <tr>
+                  <th scope="row">{{ lesson.lesson_id }}</th>
+                  <td>{{ lesson.request_date }}</td>
+                  <td>{{ lesson.type }}</td>
+                  <td>{{ lesson.duration }}</td>
+                  
+                  <td>{{ lesson.lesson_date_time }}</td>
+                  
+                  <td>{{ lesson.term }}</td>
+                  
+                  <td>{{ lesson.teacher_id }}</td>
+                  <td>{{ lesson.lesson_status }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+            </table>
+
+            </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+</div>
+{%endblock%}

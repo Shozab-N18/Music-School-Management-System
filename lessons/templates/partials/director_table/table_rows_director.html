@@ -1,0 +1,33 @@
+  <tr>
+    <th scope="row">{{user.id}}</th>
+    <td>{{ user.first_name }}</td>
+    <td>{{ user.last_name }}</td>
+    <td >{{ user.email }}</td>
+    <td >{{ user.gender }}</td>
+    <td>{{ user.is_active|yesno:"✔,✘" }}</td>
+
+    <td>
+        <a href = '{% url 'promote_admin' user.email %}'>
+          <button class="EntryButton">Make Admin</button>
+        </a>
+    </td>
+    <td>
+      <a href = '{% url 'update_user' user.id %}'>
+        <button type="button" class="btn-primary" style="border-radius:5px;">
+          <i class="bi bi-pencil-square"></i>
+        </button>
+      </a>
+      <a href = '{% url 'delete_user' user.email %}'>
+        <button type="submit" class="btn-danger" style="border-radius:5px">
+          <i class="bi-trash3-fill"></i></button>
+      </a>
+      <a href = '{% url 'disable_user' user.email %}'>
+        <button type="submit" class="btn-danger" style="border-radius:5px">
+          <i class="bi bi-slash-circle"></i>
+        </button>
+      </a>
+    </td>
+
+  </tr>
+
+

@@ -1,0 +1,12 @@
+
+{%extends 'request-base.html'%}
+<body>
+{%block request-body%}
+{% load crispy_forms_tags %}
+<h1> Edit A Lesson</h1>
+  <form action='{% url 'edit_lesson' lesson_id %}' method="post">
+    {% csrf_token %}  
+
+
+{%endblock%}
+  </body>

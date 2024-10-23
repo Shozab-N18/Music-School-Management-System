@@ -1,0 +1,39 @@
+{% extends 'admin_base_content.html' %}
+
+
+{%block content%}
+<!-- tables to display all students' invoices -->
+      <div>
+        <h1 style="text-align:center;">School Invoice History</h1>
+        <div class="divider"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Reference</th>
+              <th scope="col">Student ID</th>
+              <th scope="col">Amount of fees</th>
+              <th scope="col">Lesson ID</th>
+              <th scope="col">Invoice status</th>
+              <th scope="col">Amounts left to pay</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for invoice in all_invoices %}
+                <tr>
+                    <td>{{ invoice.reference_number }}</td>
+                    <td>{{ invoice.student_ID }}</td>
+                    <td>{{ invoice.fees_amount }}</td>
+                    <td>{{ invoice.lesson_ID }}</td>
+                    <td>{{ invoice.invoice_status }}</td>
+                    <td>{{ invoice.amounts_need_to_pay }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% if not all_transactions %}
+        <h2>There are currently no items here</h2>
+        {% endif %}
+      </div>
+    </div>
+
+    {%endblock%}

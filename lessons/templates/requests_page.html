@@ -1,0 +1,72 @@
+{%extends 'request-base.html'%}
+
+
+{%block request-body%}
+
+{% load crispy_forms_tags %}
+
+  <body>
+
+                  <h1> Request A Lesson</h1>
+               
+      <form action="{% url 'new_lesson' %}" method="post">
+        {% csrf_token %}
+      
+        <label>Select The User To Request Lessons For:</label>
+        <br>
+        <select name="selectedStudent" class="player-dropdown form-select">
+          {% for student in students_option %}
+          <option value="{{ student.email }}">{{ student.first_name }} {{ student.last_name }}</option>
+          {% endfor %}
+        </select>
+{%endblock%}
+
+
+
+
+
+
+
+  {%block extra-content%}
+<div class="col-6" id="secondColumn">
+  <div class="container vh-100">
+
+  <h1>Saved Lessons</h1>
+  <table class="table w-auto">
+    <thead style="background-color: #023e8a">
+    <tr style="color: white;">
+      <th>Student</th>
+      <th>Lesson Date and Time</th>
+      <th>Lesson Type</th>
+      <th>Lesson Duration</th>
+      <th>Teacher Name</th>
+    </tr>
+    </thead>
+    {% for lesson in lessons %}
+      <tr>
+        <td>{{lesson.student_id}}</td>
+        <td>{{lesson.lesson_date_time}}</td>
+        <td>{{lesson.type}}</td>
+        <td>{{lesson.duration}}</td>
+        <td>{{lesson.teacher_id}}</td>
+        <td>
+          <form method = "post" action="{% url 'delete_saved' lesson.lesson_id %}">
+            {% csrf_token %}
+          <button type="submit" class="btn-danger" style="border-radius:5px">
+            <i class="bi-trash3-fill"></i></button>
+          </form>
+        </td>
+        </tr>
+    {% endfor %}
+  </table>
+
+  <form action = "{% url 'save_lessons' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Confirm and Request Lessons" class="btn successbutton">
+  </form>
+
+  </div>
+</div>
+</div>
+</body>
+  {%endblock%}

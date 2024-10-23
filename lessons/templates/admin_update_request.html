@@ -1,0 +1,26 @@
+{%extends 'request-base.html'%}
+<body>
+{%block request-body%}
+{% load crispy_forms_tags %}
+
+<a href='{% url 'student_requests' lesson.student_id.id %}' >
+  <button type="button" class=" btn-danger" style="margin-left:0px; border-radius: 5px;">
+  <i class="bi-X"></i>  
+</button>
+ </a>
+
+ <div class="divider"></div>
+  <h1> Request a lesson</h1>
+
+
+
+   <div class="divider"></div>
+  <body>
+      <form action="{% url 'admin_update_request' lesson.lesson_id %}" method="post">
+        {% csrf_token %}
+
+           Lesson Status: {{lesson.lesson_status}}<br>
+
+{% endblock %}
+</body>
+

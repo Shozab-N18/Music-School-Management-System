@@ -1,0 +1,28 @@
+
+
+[
+    {
+        "model": "lessons.invoice",
+        "pk": 1,
+        "fields": {
+            "reference_number": "111-001",
+            "student_ID": "111",
+            "fees_amount": "78",
+            "lesson_ID": "2345",
+            "invoice_status": "UNPAID"
+        }
+    },
+
+    {
+        "model": "lessons.invoice",
+        "pk": 2,
+        "fields": {
+            "reference_number": "1-001",
+            "student_ID": "1",
+            "fees_amount": "78",
+            "lesson_ID": "1",
+            "invoice_status": "UNPAID"
+        }
+    }
+
+]

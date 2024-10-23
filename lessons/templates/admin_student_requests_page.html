@@ -1,0 +1,119 @@
+
+{% extends 'admin_base_content.html' %}
+
+
+{%block content%}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.level_tag }}" role="alert">{{ message }}</div>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% for user,lessons in user_lesson_dictionary.items %}
+
+        <h1>Requests from {{user.first_name}} {{user.last_name}}</h1><br>
+
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">lesson_id</th>
+                <th scope="col">request_date</th>
+                <th scope="col">type</th>
+                <th scope="col">duration</th>
+                <th scope="col">lesson_date_time</th>
+                <th scope="col">term</th>
+                <th scope="col">teacher</th>
+                <th scope="col">is_booked</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for lesson in lessons %}
+              <tr>
+                  <th scope="row">{{ lesson.lesson_id }}</th>
+                  <td>{{ lesson.request_date }}</td>
+                  <td>{{ lesson.type }}</td>
+                  <td>{{ lesson.duration }}</td>
+                  <td>{{ lesson.lesson_date_time }}</td>
+                  <td>{{ lesson.term }}</td>
+                  <td>{{ lesson.teacher_id }}</td>
+                  <td>{{ lesson.lesson_status }}</td>
+                <td>
+                  <a href='{% url 'admin_update_request_page' lesson.lesson_id %}'>
+                    <button type="button" class="btn-primary" style="border-radius:5px;">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                  </a>
+
+                  <a href='{% url 'admin_confirm_booking' lesson.lesson_id %}' method="post">
+                    <button type="button" class="btn-success"style="border-radius:5px;">
+                      <i class="bi bi-check-circle"></i>
+                    </button>
+                  </a>
+
+                  <a>
+                    <button type="button" id="myBtn{{lesson.lesson_id}}" class="btn-danger" style="border-radius:5px;" data-toggle="modal" data-target="#myModal{{lesson.lesson_id}}">
+                      <i class="bi bi-trash">
+
+                      </i></button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal{{lesson.lesson_id}}" role="dialog">
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">Are sure you want to delete the following lesson:</h3>
+                          </div>
+                          <div class="modal-body">
+                            <p>
+                              Lesson ID: {{lesson.lesson_id}} <br>
+                              Request date: {{ lesson.request_date }}<br>
+                              Type: {{ lesson.type }}<br>
+                              Duration: {{ lesson.duration }}<br>
+                              Date/Time: {{ lesson.lesson_date_time }}<br>
+                              Teacher: {{ lesson.teacher_id }}<br>
+                              Status: {{ lesson.lesson_status }}
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                            <a href='{% url 'delete_lesson' lesson.lesson_id %}' method="post">
+                              <button type="button" class="btn button3" data-toggle="modal" data-target="#myModal">Delete</button>
+                            </a>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if not lessons %}
+          <h2>There are currently no items here</h2>
+          {% endif %}
+
+          <div>
+            <a href = '{% url 'student_invoices_and_transactions' user.id %}' class = "btn">
+              <button type="button" class="EntryButton">Invoices and Transactions History</button>
+            </a>
+          </div>
+
+        </div>
+      {% endfor %}
+      
+    </div>
+  </div>
+</div>
+
+{%endblock%}

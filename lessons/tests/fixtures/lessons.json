@@ -1,0 +1,74 @@
+[
+{
+    "model": "lessons.lesson",
+    "pk": 1,
+    "fields": {
+        "request_date": "2022-10-15",
+        "type": "INSTR",
+        "duration": "30",
+        "lesson_date_time": "2022-11-20T15:15:00Z",
+        "teacher_id": 4,
+        "student_id": 1,
+        "lesson_status": "SA",
+        "term": "N/A"
+    }
+},
+
+{
+  "model": "lessons.lesson",
+  "pk": 2,
+  "fields": {
+      "request_date": "2022-10-15",
+      "type": "TH",
+      "duration": "45",
+      "lesson_date_time": "2022-10-20T16:00:00Z",
+      "teacher_id": 4,
+      "student_id": 1,
+      "lesson_status": "SA",
+      "term": "N/A"
+  }
+},
+
+{
+  "model": "lessons.lesson",
+  "pk": 3,
+  "fields": {
+      "request_date": "2022-10-15",
+      "type": "PERF",
+      "duration": "60",
+      "lesson_date_time": "2022-09-20T09:45:00Z",
+      "teacher_id": 6,
+      "student_id": 1,
+      "lesson_status": "SA",
+      "term": "N/A"
+  }
+},
+{
+  "model": "lessons.lesson",
+  "pk": 4,
+  "fields": {
+      "request_date": "2022-10-15",
+      "type": "PR",
+      "duration": "45",
+      "lesson_date_time": "2022-12-25T09:45:00Z",
+      "teacher_id": 6,
+      "student_id": 1,
+      "lesson_status": "SA",
+      "term": "N/A"
+  }
+},
+{
+  "model": "lessons.lesson",
+  "pk": 5,
+  "fields": {
+      "request_date": "2022-10-15",
+      "type": "PR",
+      "duration": "45",
+      "lesson_date_time": "2022-09-25T09:45:00Z",
+      "teacher_id": 7,
+      "student_id": 1,
+      "lesson_status": "SA",
+      "term": "N/A"
+  }
+}
+]

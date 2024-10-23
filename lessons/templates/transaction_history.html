@@ -1,0 +1,37 @@
+{% extends 'admin_base_content.html' %}
+
+
+{%block content%}
+<!-- tables to display all students' transactions -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 style="text-align:center;">School Transaction History</h1><br>
+      <h2>Total School Balance:  £ {{total}} </h2> <!-- display the total balance of school -->
+
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Student ID</th>
+              <th scope="col">Invoice Reference</th>
+              <th scope="col">Transaction amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for transaction in all_transactions %}
+                <tr>
+                    <th scope="row">{{ transaction.Student_ID_transaction }} {{student}}</th>
+                    <td>{{ transaction.invoice_reference_transaction }}</td>
+                    <td>{{ transaction.transaction_amount }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% if not all_transactions %}
+        <h2>There are currently no items here</h2>
+        {% endif %}
+      </div>
+    </div>
+
+    {%endblock%}

@@ -1,0 +1,57 @@
+{% extends 'director_base_content.html' %}
+
+{%block content%}
+  <h1> THIS IS THE DIRECTOR FEED PAGE</h1>
+
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.level_tag }}" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="row">
+  <div class="col-12">
+    <h1>Directors</h1>
+
+
+      <table class="table">
+      <thead style="color:white;">
+        {% include 'partials/director_table/table_head.html' %}
+      </thead>
+      <tbody>
+        {% for user in directors %}
+        {% include 'partials/director_table/table_rows_director.html' with user=user %}
+        {% endfor %}
+      </tbody>
+      </table>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h1>Admins</h1>
+
+      <p> <a href = '{% url 'create_admin_page' %}' class = "btn successbutton"> Create admin  </a></p>
+
+
+      <table class="table">
+      <thead style="color:white;">
+        <tr>
+          {% include 'partials/director_table/table_head.html' %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in admins %}
+        {% include 'partials/director_table/table_rows_admin.html' with user=user %}
+        {% endfor %}
+      </tbody>
+      </table>
+
+  </div>
+</div>
+
+{%endblock%}

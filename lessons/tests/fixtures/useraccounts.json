@@ -1,0 +1,178 @@
+[
+{
+    "model": "lessons.useraccount",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$jPu8imKWYYssIYNKBaldaV$TXrA5IIkSUF95RTGF3eWoh8DSLnw/tycGtMXH9dOvO8=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "johndoe@example.org",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-12-07T00:50:37.272Z",
+        "is_parent": true,
+        "parent_of_user": null,
+        "gender": "M",
+        "role": "STU",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "lessons.useraccount",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$CiTk5yggxDbXl5mxVEUfTZ$mfvJi6nrgVZZ9svEoz+apP8oWwW9RFaFGA/9KQkaTjk=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "janedoe@example.org",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-12-07T00:50:48.072Z",
+        "is_parent": false,
+        "parent_of_user": null,
+        "gender": "F",
+        "role": "STU",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "lessons.useraccount",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$Hqr0JJSKsUUmWgtXJ7jtjK$VF0ze+ZgP6jIMCAfx5SPgZcLw1o6QtmJt47tUFXvvTE=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Bobby",
+        "last_name": "Lee",
+        "email": "bobbylee@example.org",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-12-07T00:52:02.328Z",
+        "is_parent": false,
+        "parent_of_user": 1,
+        "gender": "M",
+        "role": "STU",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "lessons.useraccount",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$W8Zfsmn4iHRpPyO4G0Kbkl$eD8MgFlTbeKEMltSHBRV0u4wa0Ky7wOdfM6AcVpcGTI=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Barbare",
+        "last_name": "Dutch",
+        "email": "barbdutch@example.org",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-12-07T00:52:24.835Z",
+        "is_parent": false,
+        "parent_of_user": null,
+        "gender": "F",
+        "role": "TEA",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "lessons.useraccount",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$EbHmczTBG19Na5NL53Jrdo$O2I5PICWobHlSJafnIdk0mU/w3WlYEZXf6YSqkS/d8c=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Bob",
+        "last_name": "Jacobs",
+        "email": "bobby@example.org",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-12-07T00:52:54.905Z",
+        "is_parent": false,
+        "parent_of_user": null,
+        "gender": "M",
+        "role": "ADM",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "lessons.useraccount",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$59dDY0UZ8ue1uByhSHdRxI$O9DwtAICYYdsdu7YYPQihaEEjIfihTCU1NyL2w1oNs0=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Amane",
+        "last_name": "Hill",
+        "email": "amanehill@example.org",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-12-07T00:53:20.166Z",
+        "is_parent": false,
+        "parent_of_user": null,
+        "gender": "M",
+        "role": "TEA",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "lessons.useraccount",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$ySigNEUTqzTt16v57KEXTc$RJLQuLR7RBmU7JguhPixdi6a1GHZYam66Sc9Ro4ZYNI=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Jonathan",
+        "last_name": "Jacks",
+        "email": "johnjacks@example.org",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-12-07T00:53:32.919Z",
+        "is_parent": false,
+        "parent_of_user": null,
+        "gender": "PNOT",
+        "role": "TEA",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "lessons.useraccount",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$aBvwzS35dzqEdZDZnBfzT0$TSX7KJXN1YdFPfLmPv17RO8W870NFeb41Cf2TIQaYbg=",
+        "last_login": null,
+        "is_superuser": true,
+        "first_name": "Jack",
+        "last_name": "Smith",
+        "email": "jsmith@example.org",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-12-07T16:08:52.769Z",
+        "is_parent": false,
+        "parent_of_user": null,
+        "gender": "M",
+        "role": "DIR",
+        "balance": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

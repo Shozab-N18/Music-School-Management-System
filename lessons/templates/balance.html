@@ -1,0 +1,159 @@
+{% extends 'base_content.html' %}
+
+
+{%block content%}
+
+
+
+
+    
+
+    <body>
+        <title style="font-family: 'JetBrains Mono', monospace;">Balance and Transaction page</title>
+        <div class="divider"></div>
+        <h2 style="text-align: center; font-family: 'JetBrains Mono'">{{student.first_name}} {{student.last_name}}'s Balance, Invoices and Transaction page</h2>
+        <br>
+    
+    <!-- display error message -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.level_tag }}" role="alert">{{ message }}</div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    {% for balance in Balance %}
+    <div class="padding">
+    <h4>Your balance: £{{balance}}</h4>
+</div>
+    {% endfor %}
+    <!-- <h4>The balance is calcualted base on the difference of the total of both invoices and payments</h4> -->
+    <br>
+
+<!-- tables to display invoices -->
+<button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#collapseInvoiceTable" aria-expanded="false" aria-controls="collapseInvoiceTable">
+    Invoices
+  </button>
+  <div class="divider"></div>
+<div class="collapse" id="collapseInvoiceTable">
+        
+            <table class="table w-auto" >
+                <thead style="background-color: #023e8a;">
+                <tr style="color: white; ">
+            <!-- table head of the invoice -->
+            <th>Reference</th>
+            <th>Student ID</th>
+            <th>Amount of fees</th>
+            <th>Lesson ID</th>
+            <th>Invoice status</th>
+            <th>Amounts left to be paid</th>
+        </tr>
+        </thead>
+        {% for invoice in Invoice reversed %} <!-- this function reads all the invoices under the student and print them out in one single table -->
+        <tr>
+            <td>{{invoice.reference_number}}</td>
+            <td>{{invoice.student_ID}}</td>
+            <td>{{invoice.fees_amount}}</td>
+            <td>{{invoice.lesson_ID}}</td>
+            <td>{{invoice.invoice_status}}</td>
+            <td>{{invoice.amounts_need_to_pay}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- tables to display child invoices -->
+<button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#collapseInvoiceTable" aria-expanded="false" aria-controls="collapseInvoiceTable">
+    Child Invoices
+  </button>
+  <div class="divider"></div>
+<div class="collapse" id="collapseInvoiceTable">
+        
+            <table class="table w-auto" >
+                <thead style="background-color: #023e8a;">
+                <tr style="color: white; ">
+            <!-- table head of the invoice -->
+            <th>Reference</th>
+            <th>Student ID</th>
+            <th>Amount of fees</th>
+            <th>Lesson ID</th>
+            <th>Invoice status</th>
+            <th>Amounts left to be paid</th>
+        </tr>
+        </thead>
+        {% for child_invoice in child_invoices reversed %} <!-- this function reads all the invoices under the student and print them out in one single table -->
+        <tr>
+            <td>{{child_invoice.reference_number}}</td>
+            <td>{{child_invoice.student_ID}}</td>
+            <td>{{child_invoice.fees_amount}}</td>
+            <td>{{child_invoice.lesson_ID}}</td>
+            <td>{{child_invoice.invoice_status}}</td>
+            <td>{{child_invoice.amounts_need_to_pay}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- tables to display transactions -->
+<div class="divider"></div>
+<button class="btn EntryButton" type="button" data-toggle="collapse" data-target="#collapseTransactionTable" aria-expanded="false" aria-controls="collapseTransactionTable">
+    Transactions
+  </button>
+
+  <div class="divider"></div>
+<div class="collapse" id="collapseTransactionTable">
+   
+        <table class="table w-auto">
+            <thead style="background-color: #023e8a">
+                <tr style="color: white; ">
+        <!-- table head of the transaction -->
+        <th>Student ID</th>
+        <th>Invoice reference number</th>
+        <th>Transaction Amount</th>
+    </tr>
+    </thead>
+    {% for transaction in Transaction reversed %} <!-- this function reads all the transactions under the student and print them out in one single table -->
+    <tr>
+        <td>{{transaction.Student_ID_transaction }}</td>
+        <td>{{transaction.invoice_reference_transaction }}</td>
+        <td>{{transaction.transaction_amount }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div> 
+
+<!-- Area that student can enter an invoice reference number and the amount the want to pay -->
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+<div>
+    <hr>
+    <h4 style="text-align: center;">Pay for an invoice below:</h4> 
+       
+        <div class="container vh-100" >
+        <form action="{% url 'pay_for_invoice' %}" method = 'post'>
+            {% csrf_token %}
+
+            <div class="form-floating mb-3">
+            <input type='text' class="form-control"  id="floatingInput" name="invocie_reference" for="floatingInput"  placeholder="xxx-xxx" />
+            <label for='invocie_reference floatingInput'>Invoice Reference:</label>
+            
+                </div>
+
+                <div class="form-floating mb-3">
+            <input type='number' name="amounts_pay" class = "form-control"  id="floatingInput" for="floatingInput" placeholder="£x"/>
+            <label for='amounts_pay floatingInput'>Payment amounts:</label>
+                </div>
+
+            <button type = 'submit',  class = "btn successbutton">submit</button>
+        </form>
+    </div>
+</div>
+
+
+
+    </body>
+    {% endblock %}
